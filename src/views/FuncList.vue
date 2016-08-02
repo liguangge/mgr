@@ -1,15 +1,20 @@
 <template>
-   <a  v-link="{ path: '/home', replace: true}">home{{funclist }}</a>
-   <button @click='funcList'>getFunclist</button>
-   <ul>
-     <li v-for="item in funclist">
-     {{item.funcName}}
-     </li>
-   </ul>
+   <div class="page-search">
+       <mt-search :value.sync="">
+        <mt-cell
+            v-for="item in funclist"
+            :title="item.funcName"
+            :value="item.funcId">
+        </mt-cell>
+      </mt-search>
+
+   </div>
 </template>
 <script>
 import { getFuncList }  from '../../vuex/getters'
 import { funcList }  from '../../vuex/actions'
+import 'mint-ui/lib/style.css'
+import { Search } from 'mint-ui'
 export default {
   data () {
     return {
@@ -17,7 +22,8 @@ export default {
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      msg: 'Hello World!'
+      msg: 'Hello World!',
+      visible: true
     }
   },
   vuex:{
@@ -30,3 +36,8 @@ export default {
   }
 }
 </script>
+<style lang="css">
+.page-search {
+    height: 100%;
+  }
+</style>

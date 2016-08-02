@@ -3,19 +3,13 @@ export default function (router) {
         '/': {
             name: 'index',
             component (resolve) {
-                require(['./views/Hello'], resolve)
+                require(['./views/Home'], resolve)
             }
         },
          /* 404路由 */
         '*': {
             component: function(resolve){
-                require(['./views/Hello'],resolve);
-            }
-        },
-        '/hello': {
-             name: 'hello',
-             component (resolve) {
-                 require(['./views/Hello'], resolve)
+                require(['./views/Home'],resolve);
             }
         },
         '/funclist': {
@@ -29,7 +23,7 @@ export default function (router) {
     let toPath = to.path
     let fromPath = from.path
     console.log('to: ' + toPath + ' from: ' + fromPath)
-    if(toPath === '/funclist'){
+    if(toPath === '/funclist1'){
         router.app.isIndex = false
     }else{
         router.app.isIndex = true

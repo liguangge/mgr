@@ -1,10 +1,27 @@
 <template>
   
-    <div >
-      <ul v-if="isIndex">
-        <li v-link={path:'hello'}>hello</li>
-        <li v-link="{ path:'/funclist', replace: true}">功能管理</li>
-      </ul>
+    <div>
+
+      <mt-tabbar :selected.sync="selected">
+      <mt-tab-item id="用户管理">
+      <img slot="icon" src="assets/logo.png" v-link="{ path:'/funclist', replace: true}">
+            用户管理
+      </mt-tab-item>
+      <mt-tab-item id="角色管理">
+        <img slot="icon" src="assets/logo.png" v-link="{ path:'/funclist', replace: true}">
+          角色管理
+      </mt-tab-item>
+      <mt-tab-item id="功能管理" v-link="{ path:'/funclist', replace: true}">
+        <img slot="icon" src="assets/logo.png" >
+          功能管理
+      </mt-tab-item>
+      <mt-tab-item id="我的">
+        <img slot="icon" src="assets/logo.png">
+          我的
+      </mt-tab-item>
+      </mt-tabbar>
+    
+     
       <router-view></router-view>
     </div>
  
@@ -12,10 +29,15 @@
 
 <script>
 import store from '../vuex/store'
+import { Header } from 'mint-ui'
+import { Button } from 'mint-ui'
+import { Tabbar, TabItem } from 'mint-ui';
+
 export default {
   data() {
     return {
-      isIndex:true
+      isIndex:true,
+      selected:'功能管理'
     }
   },
   store:store
@@ -34,23 +56,6 @@ body {
   height: 100%;
 }
 
-#app {
-  color: #2c3e50;
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
-
-#app a {
-  color: #42b983;
-  text-decoration: none;
-}
-
-.logo {
-  width: 100px;
-  height: 100px
-}
 ul,li{
   list-style:none;
 }

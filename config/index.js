@@ -25,6 +25,10 @@ module.exports = {
         '/api/*':{
             target: "http://localhost:8080",
             changeOrigin:true,
+        },
+        '/api/func/*':{
+            target: "http://localhost:8080",
+            changeOrigin:true,
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

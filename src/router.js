@@ -17,6 +17,12 @@ export default function (router) {
              component (resolve) {
                  require(['./views/FuncList'], resolve)
             }
+        },
+        '/addfunc': {
+             name: 'addfunc',
+             component (resolve) {
+                 require(['./views/AddFunc'], resolve)
+            }
         }
     })
     router.beforeEach(({to, from, next}) => {

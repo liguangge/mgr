@@ -1,30 +1,23 @@
 <template>
    <div class="page-search">
-       <mt-search :value.sync="">
-        <mt-cell
-            v-for="item in funclist"
-            :title="item.funcName"
-            :value="item.funcId">
-        </mt-cell>
-      </mt-search>
+       <search></search>
+       <result></result>
 
    </div>
 </template>
 <script>
 import { getFuncList }  from '../../vuex/getters'
 import { funcList }  from '../../vuex/actions'
-import 'mint-ui/lib/style.css'
-import { Search } from 'mint-ui'
+import search from '../components/search.vue'
+import result from '../components/result.vue'
 export default {
   data () {
     return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello World!',
-      visible: true
     }
+  },
+  components: {
+    search: search,
+    result: result
   },
   vuex:{
     getters:{
